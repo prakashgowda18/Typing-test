@@ -103,10 +103,24 @@ const displayResult = () => {
   }
   document.getElementById("wpm").innerText =
     (userInput.value.length / 5 / timeTaken).toFixed(2) + " wpm";
-  document.getElementById("accuracy").innerText =
-    Math.round(
-      ((userInput.value.length - mistakes) / userInput.value.length) * 100
-    ) + " %";
+  var accuracy1=Math.round(
+    ((userInput.value.length - mistakes) / userInput.value.length) * 100
+  );
+  document.getElementById("accuracy").innerText =accuracy1
+    + " %";
+  if(accuracy1>0 && accuracy1<33){
+    document.getElementById("level").innerText="Beginner";
+  }
+  else if(accuracy1>33 && accuracy1<66){
+    document.getElementById("level").innerText="Intermediate";
+  }
+  else if(accuracy1>66 && accuracy1<=100){
+    document.getElementById("level").innerText="Advanced";
+  }
+  else{
+    document.getElementById("wish").innerText="Oops!";
+    document.getElementById("level").innerText="Please try again.";
+  }
 };
 
 

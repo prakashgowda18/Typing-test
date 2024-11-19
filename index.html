@@ -31,12 +31,13 @@
       <button id="start-test" onclick="startTest()">Start</button>
       <button id="stop-test" onclick="displayResult()">Stop</button>
       <div class="result" style="display: none;">
-        <h2>Congratulations!</h2>
-        <h3>Result</h3>
+        <h2 id="wish">Congratulations!</h2>
+        <h3 id="level">Result</h3>
         <div class="wrapper">
           <p>Accuracy: <span id="accuracy"></span></p>
           <p>Speed: <span id="wpm"></span></p>
         </div>
+        <!-- <i class="terms"><i>* calculated based on accuracy only.</i></p> -->
     <!-- Script -->
     <script src="script.js"></script>
   </body>
