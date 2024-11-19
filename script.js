@@ -1,6 +1,6 @@
 //Random Quotes Api URL
-const quoteApiUrl = "https://api.quotable.io/random?minLength=80&maxLength=100";
-// const quoteApiUrl = "https://zenquotes.io/api/random";
+// const quoteApiUrl = "https://api.quotable.io/random?minLength=80&maxLength=100";
+const quoteApiUrl="https://quotes-api-self.vercel.app/quote";
 const quoteSection = document.getElementById("quote");
 const userInput = document.getElementById("quote-input");
 let quote = "";
@@ -10,23 +10,24 @@ let mistakes = 0;
 
 //Display random quotes
 const renderNewQuote = async () => {
-  //Fetch contents from url
-  const response = await fetch(quoteApiUrl);
-
-  //Store response
-  let data = await response.json();
-
-  //Access quote
-  quote = data.content;
-
-  //Array of characters in the quote
-  let arr = quote.split("").map((value) => {
-    //wrap the characters in a span tag
-    return "<span class='quote-chars'>" + value + "</span>";
-  });
-  //join array for displaying
-  quoteSection.innerHTML += arr.join("");
+  try {
+    const response = await fetch(quoteApiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    let data = await response.json();
+    console.log(data); // Debug to verify the API response
+    quote = data.quote || "Default fallback quote.";
+    let arr = quote.split("").map((value) => {
+      return "<span class='quote-chars'>" + value + "</span>";
+    });
+    quoteSection.innerHTML = arr.join("");
+  } catch (error) {
+    console.error("Error fetching or rendering quote:", error);
+    quoteSection.innerHTML = "<p>Failed to load quote. Please try again later.</p>";
+  }
 };
+
 
 //Logic for comparing input words with quote
 userInput.addEventListener("input", () => {
