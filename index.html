@@ -13,6 +13,16 @@
   </head>
   <body>
     <div class="container">
+      <div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <h1>Typizy</h1>
       <div class="stats">
         <p>Time: <span id="timer">0s</span></p>
         <p>Mistakes: <span id="mistakes">0</span></p>
@@ -25,18 +35,17 @@
       <textarea
         rows="3"
         id="quote-input"
-        placeholder="Type here when the test starts.."
+        placeholder="Click 'Start' to begin and type the text."
       ></textarea>
-      <button id="start-test" onclick="startTest()">Start Test</button>
-      <button id="stop-test" onclick="displayResult()">Stop Test</button>
-      <div class="result">
+      <button id="start-test" onclick="startTest()">Start</button>
+      <button id="stop-test" onclick="displayResult()">Stop</button>
+      <div class="result" style="display: none;">
+        <h2>Congratulations!</h2>
         <h3>Result</h3>
         <div class="wrapper">
           <p>Accuracy: <span id="accuracy"></span></p>
           <p>Speed: <span id="wpm"></span></p>
         </div>
-      </div>
-    </div>
     <!-- Script -->
     <script src="script.js"></script>
   </body>

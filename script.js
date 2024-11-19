@@ -90,7 +90,7 @@ const timeReduce = () => {
   timer = setInterval(updateTimer, 1000);
 };
 
-//End Test
+// End Test
 const displayResult = () => {
   //display result div
   document.querySelector(".result").style.display = "block";
@@ -108,6 +108,7 @@ const displayResult = () => {
       ((userInput.value.length - mistakes) / userInput.value.length) * 100
     ) + " %";
 };
+
 
 //Start Test
 const startTest = () => {
