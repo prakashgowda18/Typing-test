@@ -141,3 +141,24 @@ window.onload = () => {
   userInput.disabled = true;
   renderNewQuote();
 };
+// theme
+const themeToggleButton = document.getElementById("theme-toggle");
+// Check for saved theme in local storage
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
+themeToggleButton.innerText = savedTheme === "light" ? "Dark" : "Light";
+
+// Toggle theme on button click
+themeToggleButton.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+  
+  // Apply the new theme
+  document.documentElement.setAttribute("data-theme", newTheme);
+  
+  // Save the new theme to local storage
+  localStorage.setItem("theme", newTheme);
+
+  // Update button text
+  themeToggleButton.innerText = newTheme === "light" ? "Dark" : "Light";
+});

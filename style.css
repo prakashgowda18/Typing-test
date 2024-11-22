@@ -5,10 +5,9 @@
     font-family: "Poppins", sans-serif;
   }
   body {
-    /* background-color: #3066f6; */
-    /* background-color: #000; */
-    background-color: #ccc;
-opacity: 0.97;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
   }
   .container {
     width: 80vmin;
@@ -53,9 +52,8 @@ opacity: 0.97;
     font-size: 18px;
   }
   button:hover{
-    cursor: pointer;
     background-color: #000;
-    
+    cursor: pointer;
   }
   .result {
     margin-top: 40px;
@@ -92,3 +90,15 @@ opacity: 0.97;
     font-size:12px;
     margin-top: 40px;
   }
+  :root[data-theme='light'] {
+    --background-color: #d8d8d8;
+  }
+  :root[data-theme='dark'] {
+    --background-color: #181818;
+  }
+  #theme-toggle{
+   margin: 50px;
+  }
+  
+  
+  
