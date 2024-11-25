@@ -125,7 +125,6 @@ const displayResult = () => {
 };
 
 
-
 //Start Test
 const startTest = () => {
   mistakes = 0;
