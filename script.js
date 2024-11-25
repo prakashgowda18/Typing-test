@@ -92,29 +92,30 @@ const timeReduce = () => {
 
 // End Test
 const displayResult = () => {
-  //display result div
   document.querySelector(".result").style.display = "block";
   clearInterval(timer);
   document.getElementById("stop-test").style.display = "none";
+  document.getElementById("retest-button").style.display = "block"; // Show the retest button
   userInput.disabled = true;
-  let timeTaken = 1;
-  if (time != 0) {
-    timeTaken = (60 - time) / 100;
-  }
-  document.getElementById("wpm").innerText =
+  
+  let timeTaken = time !== 0 ? (60 - time) / 100 : 1;
+  document.getElementById("wpm").innerText = 
     (userInput.value.length / 5 / timeTaken).toFixed(2) + " wpm";
-  var accuracy1=Math.round(
+
+  const accuracy1 = Math.round(
     ((userInput.value.length - mistakes) / userInput.value.length) * 100
   );
-  document.getElementById("accuracy").innerText =accuracy1
-    + " %";
-  if(accuracy1>0 && accuracy1<33){
+  document.getElementById("accuracy").innerText = accuracy1 + " %";
+  if(accuracy1>0 && accuracy1<=33){
+    document.getElementById("wish").innerText="Congratulations!";
     document.getElementById("level").innerText="Beginner";
   }
-  else if(accuracy1>33 && accuracy1<66){
+  else if(accuracy1>33 && accuracy1<=66){
+    document.getElementById("wish").innerText="Congratulations!";
     document.getElementById("level").innerText="Intermediate";
   }
   else if(accuracy1>66 && accuracy1<=100){
+    document.getElementById("wish").innerText="Congratulations!"
     document.getElementById("level").innerText="Advanced";
   }
   else{
@@ -122,6 +123,7 @@ const displayResult = () => {
     document.getElementById("level").innerText="Please try again.";
   }
 };
+
 
 
 //Start Test
@@ -146,7 +148,7 @@ const themeToggleButton = document.getElementById("theme-toggle");
 // Check for saved theme in local storage
 const savedTheme = localStorage.getItem("theme") || "light";
 document.documentElement.setAttribute("data-theme", savedTheme);
-themeToggleButton.innerText = savedTheme === "light" ? "Dark" : "Light";
+themeToggleButton.innerText = savedTheme === "light" ? "Swith to Dark" : "Switch to Light";
 
 // Toggle theme on button click
 themeToggleButton.addEventListener("click", () => {
@@ -160,5 +162,20 @@ themeToggleButton.addEventListener("click", () => {
   localStorage.setItem("theme", newTheme);
 
   // Update button text
-  themeToggleButton.innerText = newTheme === "light" ? "Dark" : "Light";
+  themeToggleButton.innerText = newTheme === "light" ? "Switch to Dark" : "Switch to Light";
 });
+const retest = () => {
+  mistakes = 0;
+  time = 60;
+  userInput.value = "";
+  userInput.disabled = true;
+  document.querySelector(".result").style.display = "none";
+  document.getElementById("retest-button").style.display = "none";
+  document.getElementById("start-test").style.display = "block";
+  document.getElementById("stop-test").style.display = "none";
+  document.getElementById("mistakes").innerText = "0";
+  document.getElementById("timer").innerText = "60s";
+  renderNewQuote();
+};
+document.getElementById("retest-button").addEventListener("click", retest);
+

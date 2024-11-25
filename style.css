@@ -44,7 +44,7 @@
     float: right;
     margin-top: 20px;
     /* background-color: #3066f6; */
-    background-color: #000;
+    background-color: #000000;
     color: #ffffff;
     border: none;
     padding: 10px 30px;
@@ -52,8 +52,9 @@
     font-size: 18px;
   }
   button:hover{
-    background-color: #000;
+    background-color: #9b9797;
     cursor: pointer;
+    color: #000000;
   }
   .result {
     margin-top: 40px;
@@ -98,6 +99,11 @@
   }
   #theme-toggle{
    margin: 50px;
+  }
+  i{
+    color:#aaa8a8;
+    display:flex;
+    justify-content: left;
   }
   
   

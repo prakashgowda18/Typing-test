@@ -29,8 +29,12 @@
         id="quote-input"
         placeholder="Click 'Start' to begin and type the text."
       ></textarea>
-      <button id="start-test" onclick="startTest()">Start</button>
-      <button id="stop-test" onclick="displayResult()">Stop</button>
+      <button id="start-test" onclick="startTest()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play" viewBox="0 0 14 14">
+        <path d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+      </svg></button>
+      <button id="stop-test" onclick="displayResult()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pause" viewBox="0 0 14 14">
+        <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5"/>
+      </svg></button>
       <div class="result" style="display: none;">
         <h2 id="wish">Congratulations!</h2>
         <h3 id="level">Result</h3>
@@ -38,7 +42,12 @@
           <p>Accuracy: <span id="accuracy"></span></p>
           <p>Speed: <span id="wpm"></span></p>
         </div>
-        <!-- <i class="terms"><i>* calculated based on accuracy only.</i></p> -->
+      <button id="retest-button" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 14 14">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+      </svg></button>
+
+        <i class="terms"><i>current level is calculated based on accuracy only.</i>
     <!-- Script -->
     <script src="script.js"></script>
   </body>
